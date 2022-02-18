@@ -8,7 +8,14 @@ def play_song():
     while pygame.mixer.music.get_busy() == True:
         continue
 
+def play_multiplex():
+    pygame.mixer.init()
+    pygame.mixer.music.load("multiplex.mp3")
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy() == True:
+        continue
 
-play_song()
+
+play_multiplex()
 
 
