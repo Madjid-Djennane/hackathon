@@ -2,7 +2,8 @@
 # encoding: utf-8
 
 import json
-from flask import Flask
+import pygame
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 @app.route('/')
@@ -14,5 +15,18 @@ def index():
     #TODO: Trouver un package pour lire le nom du client ect...
 
     #TODO: Activer les speakers en lisant le nom du client + dire nouveau client mdr
-    print('lol')
-app.run()
+    
+    return 'hello'
+
+@app.route('/', methods=['POST'])
+def on_record():
+    restaurant_name = request.args['name']
+    say_my_name(restaurant_name)
+    return request.args['name']
+
+
+def say_my_name(restaurant_name): 
+    return 'Nous avons un  nouveau client sur la MalouApp, ' + restaurant + ', Bravo à tous'
+
+
+app.run(debug=True)
